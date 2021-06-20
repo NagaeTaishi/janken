@@ -14,7 +14,7 @@ class Create
         end
     end
     
-    def createdirection
+    def make_direction
         random = Random.new()
         $macDirection = random.rand(0..3)
             if $macDirection == 0
@@ -25,11 +25,11 @@ class Create
                 direction = "↓"
             elsif $macDirection == 3
                 direction = "←"
-　　　　　　end
-　　　　1.times do
-　　　　    puts "Mac:#{direction}"
-　　　　end
-　　end
+            end
+        1.times do
+            puts "Mac:#{direction}"
+        end
+    end
 end
 
 class You
@@ -59,25 +59,25 @@ class You
     def north
         puts "あなた：↑"
         create_direction = Create.new()
-        create_direction.createdirection
+        create_direction.make_direction
     end
         
     def east
         puts "あなた：→"
         create_direction = Create.new()
-        create_direction.createdirection
+        create_direction.make_direction
     end
         
     def south
         puts "あなた：↓"
         create_direction = Create.new()
-        create_direction.createdirection
+        create_direction.make_direction
     end
         
     def west
         puts "あなた：←"
         create_direction = Create.new()
-        create_direction.createdirection
+        create_direction.make_direction
     end
 end
 
@@ -114,25 +114,33 @@ while true
             puts "-----------------"
             puts "あっち向いて〜"
             puts "0(↑), 1(→), 2(↓), 3(←)"
-            yourDirecrion = gets.chomp
+            yourDirection = gets.chomp
             if yourDirection == "0"
                 you = You.new()
                 you.serif
                 you.north
-            elsif direction == "1"
+            elsif yourDirection == "1"
                 you = You.new()
                 you.serif
                 you.east
-            elsif direction == "2"
+            elsif yourDirection == "2"
                 you = You.new()
                 you.serif
                 you.south
-            elsif direction == "3"
+            elsif yourDirection == "3"
                 you = You.new()
                 you.serif
                 you.west
             else 
                 puts "0,1,2,3のいずれかを選択してくだいさい。"
+            end
+            if yourDirection == $macDirection.to_s
+                puts "勝負がつきました。"
+                break
+            elsif
+                puts "勝負がつきませんでした。"
+                puts "じゃんけん..."
+                puts "0(グー), 1(チョキ), 2(パー), 3(終了する)"
             end
         end
 end
