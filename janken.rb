@@ -136,10 +136,18 @@ while true
             end
             if yourDirection == $macDirection.to_s
                 puts "勝負がつきました。"
+                if yourDirection == "0" and $macNumber == "1"
+                    puts "あなたが勝ちました。"
+                elsif yourDirection == "1" and $macNumber == "2"
+                    puts "あなたが勝ちました。"
+                elsif yourDirection == "2" and $macNumber == "0"
+                    puts "あなたが勝ちました。"
+                else
+                    puts "Macが勝ちました。"
+                end
                 break
             elsif
-                puts "勝負がつきませんでした。"
-                puts "じゃんけん..."
+                puts "勝負がつきませんでした。じゃんけん..."
                 puts "0(グー), 1(チョキ), 2(パー), 3(終了する)"
             end
         end
